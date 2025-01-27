@@ -11,7 +11,7 @@ st.sidebar.title("📝 **NoteMaster**")
 st.sidebar.markdown("<h3>Navigation rapide</h3>", unsafe_allow_html=True)
 menu = st.sidebar.radio(
     "📂 <span style='color: #0066CC;'>Choisissez une option :</span>", 
-    ["Dashboard", "Prise de Notes", "Mode Quiz", "Docs"], 
+    ["Dashboard", "Prise de Notes", "Mode Quiz", "API", "Docs"], 
     format_func=lambda x: f"🔹 {x}", 
     index=0,
     label_visibility="hidden", 
@@ -133,6 +133,45 @@ elif menu == "Mode Quiz":
         else:
             st.info("Aucune question disponible. Cliquez sur 'Générer des questions' pour commencer.")
 
+
+elif menu == "API":
+    st.header("Configuration de l'API")
+
+    # Charger la clé API existante (si elle existe)
+    if "api_key" not in st.session_state:
+        from dotenv import load_dotenv
+        load_dotenv()
+        st.session_state.api_key = os.getenv("MISTRAL_KEY", "")
+
+    # Formulaire pour entrer ou mettre à jour la clé API
+    st.write("Entrez votre clé API de Mistral pour activer les fonctionnalités de génération.")
+    api_key_input = st.text_input(
+        "Clé API",
+        value=st.session_state.api_key,
+        placeholder="Entrez votre clé API de 32 caractères",
+        type="password",
+        key="api_input"
+    )
+
+    # Boutons pour enregistrer ou réinitialiser
+    col1, col2 = st.columns(2)
+
+    with col1:
+        if st.button("Enregistrer la clé API"):
+            if len(api_key_input) == 32:
+                with open(".env", "w") as file:
+                    file.write(f'MISTRAL_KEY="{api_key_input}"')
+                st.session_state.api_key = api_key_input
+                st.success("Clé API enregistrée avec succès !")
+            else:
+                st.error("Clé API invalide. Elle doit comporter exactement 32 caractères.")
+
+    with col2:
+        if st.button("Réinitialiser la clé API"):
+            if os.path.exists(".env"):
+                os.remove(".env")
+            st.session_state.api_key = ""
+            st.warning("Clé API réinitialisée. Veuillez en entrer une nouvelle.")
 
 
 elif menu == "Docs":
