@@ -1,0 +1,22 @@
+[
+    {
+        "text": "Quels sont les trois principaux types de réseaux mentionnés dans le texte et quelles sont leurs caractéristiques ?",
+        "reponse": "Les trois principaux types de réseaux sont les réseaux locaux (LAN), les réseaux étendus (WAN) et les réseaux métropolitains (MAN). Un LAN connecte des périphériques dans une zone géographique restreinte, un WAN connecte des réseaux locaux sur de longues distances, et un MAN couvre une ville ou une région urbaine."
+    },
+    {
+        "text": "Quels sont les deux modèles de communication mentionnés et quelles sont leurs couches respectives ?",
+        "reponse": "Les deux modèles de communication mentionnés sont le modèle OSI et le modèle TCP/IP. Le modèle OSI est composé de 7 couches : Physique, Liaison de données, Réseau, Transport, Session, Présentation, Application. Le modèle TCP/IP simplifie le modèle OSI avec 4 couches : Accès au réseau, Internet, Transport, Application."
+    },
+    {
+        "text": "Quels sont les protocoles réseau mentionnés dans le texte et à quoi servent-ils ?",
+        "reponse": "Les protocoles réseau mentionnés sont HTTP/HTTPS, TCP/UDP, IP et DNS. HTTP/HTTPS sont utilisés pour la navigation sur le web, TCP garantit la fiabilité des données tandis qu'UDP est plus rapide mais non fiable, IP adresse chaque dispositif sur un réseau, et DNS traduit les noms de domaine en adresses IP."
+    },
+    {
+        "text": "Quels sont les équipements réseau mentionnés et quelles sont leurs fonctions ?",
+        "reponse": "Les équipements réseau mentionnés sont le routeur, le commutateur (switch) et le point d'accès sans fil. Un routeur connecte plusieurs réseaux ensemble et dirige les paquets de données, un commutateur connecte des périphériques dans un réseau local, et un point d'accès sans fil permet aux appareils de se connecter via Wi-Fi."
+    },
+    {
+        "text": "Quels sont les concepts fondamentaux des réseaux informatiques mentionnés et leur rôle ?",
+        "reponse": "Les concepts fondamentaux mentionnés sont l'adresse IP, le masque de sous-réseau et la passerelle par défaut. Une adresse IP est une adresse unique attribuée à chaque périphérique sur un réseau, un masque de sous-réseau est utilisé pour diviser un réseau en sous-réseaux, et une passerelle par défaut permet à un périphérique de communiquer avec des périphériques en dehors de son réseau."
+    }
+]
