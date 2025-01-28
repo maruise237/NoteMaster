@@ -91,45 +91,58 @@ elif menu == "Mode Quiz":
     notes = load_notes()
     note_titles = [note["title"] for note in notes]
     selected_note = st.selectbox("Choisissez une note", note_titles)
-    
+
     if selected_note:
         note_content = next(note["content"] for note in notes if note["title"] == selected_note)
-        
         json_file_path = os.path.join(QUESTIONS_DIR, f"{selected_note}.json")
         
-        # Charger les questions depuis le fichier JSON si elles existent
-        questions = []
-        if os.path.exists(json_file_path):
-            with open(json_file_path, "r") as file:
-                questions = json.load(file)
-        
-        # Générer de nouvelles questions si l'utilisateur clique sur le bouton
+        # Fonction pour charger les questions et les stocker dans session_state
+        def load_questions():
+            if os.path.exists(json_file_path):
+                with open(json_file_path, "r") as file:
+                    return json.load(file)
+            return []
+
+        # Initialisation des questions si pas encore chargées
+        if "questions" not in st.session_state or st.session_state.get("current_note") != selected_note:
+            st.session_state.questions = load_questions()
+            st.session_state.current_note = selected_note  # Stocker la note sélectionnée
+
+        # Générer de nouvelles questions
         if st.button("Générer des questions"):
             try:
                 with st.spinner("Génération des questions en cours..."):
                     new_questions = generate_questions(selected_note, note_content)
                 
                 if new_questions:
-                    # Sauvegarder les nouvelles questions dans le fichier JSON
                     with open(json_file_path, "w") as file:
                         json.dump(new_questions, file, indent=4, ensure_ascii=False)
                     
+                    st.session_state.questions = new_questions  # Met à jour en session_state
                     st.success("Questions générées et sauvegardées avec succès !")
-                    # Mettre à jour les questions chargées
-                    questions = new_questions
                 else:
                     st.error("L'API n'a retourné aucune question. Veuillez vérifier le contenu des notes ou l'API.")
             except Exception as e:
                 st.error(f"Une erreur s'est produite : {e}")
-        
-        # Afficher les questions en mode Quiz
-        if questions:
+
+        # Afficher les questions
+        if st.session_state.questions:
             st.write("### Questions :")
-            for i, question in enumerate(questions, 1):
+            for i, question in enumerate(st.session_state.questions, 1):
                 with st.expander(f"Question {i}: {question['text']}"):
                     user_answer = st.text_input(f"Votre réponse pour la question {i}", key=f"answer_{i}")
                     if st.button(f"Vérifier la réponse {i}", key=f"check_{i}"):
                         st.write(f"**Réponse correcte :** {question['reponse']}")
+
+            # Bouton pour supprimer les questions existantes
+            if st.button("🗑️ Supprimer toutes les questions"):
+                try:
+                    os.remove(json_file_path)  # Supprime le fichier JSON
+                    st.session_state.questions = []  # Met à jour immédiatement
+                    st.success("Les questions ont été supprimées avec succès !")
+                except Exception as e:
+                    st.error(f"Erreur lors de la suppression : {e}")
+        
         else:
             st.info("Aucune question disponible. Cliquez sur 'Générer des questions' pour commencer.")
 
