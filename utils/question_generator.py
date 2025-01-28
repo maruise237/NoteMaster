@@ -24,7 +24,6 @@ def generate_questions(note_title, note_content):
     :return: Une liste de questions générées
     """
     try:
-        # Prompt simplifié
         prompt = (
             f"À partir de ce texte, crée des questions relativement ouvertes. Qui va permettre de faire de l'apprentissage actif. "
             f"Tu choisiras un nombre de question adéquat en fonction de la longueur du texte.\n"
