@@ -1,28 +1,28 @@
-# 📝 Active Learning avec Python et Mistral
+# 📝 Active Learning avec Python et DeepSeek
 
-Ce projet combine la prise de notes et l'apprentissage actif grâce à l'intégration de Python et de l'API Mistral. L'application permet aux étudiants de prendre des notes, de générer des questions basées sur leurs notes et de répondre à ces questions avec des corrections automatiques accompagnées d'explications détaillées. 🚀
+Ce projet combine la prise de notes et l'apprentissage actif grâce à l'intégration de Python et de l'API DeepSeek. L'application permet aux étudiants de prendre des notes, de générer des questions basées sur leurs notes et de répondre à ces questions avec des corrections automatiques accompagnées d'explications détaillées. 🚀
 
 ---
 
 ## 🛠️ Fonctionnalités
 
 - **Prise de notes simplifiée** : Ajoutez, consultez et supprimez des notes facilement.
-- **Génération de questions** : Utilisez l'API de Mistral pour transformer vos notes en questions relativment ouverte.
+- **Génération de questions** : Utilisez l'API de DeepSeek pour transformer vos notes en questions relativement ouvertes.
 - **Correction instantanée** : Répondez aux questions et recevez des explications détaillées sur vos réponses.
 - **Interface intuitive** : Une interface graphique épurée et facile à utiliser grâce à Streamlit.
-- **Configuration de l'API** : Gérer votre clé API Mistral directement depuis l'interface sur la partie API.
+- **Configuration de l'API** : Gérez votre clé API DeepSeek directement depuis l'interface sur la partie API.
 
 ---
 
-## 📋 Prérequis
+## 👋 Prérequis
 
 1. **Python 3.9 ou plus**
 2. **Bibliothèques Python nécessaires** :
     - `streamlit`
     - `dotenv`
-    - `mistralai` 
-3. **Clé API Mistral** :
-    - Créer un compte et obtenez votre clé auprès de [Mistral](https://mistral.ai) et configurez-la dans le projet.
+    - `openai`
+3. **Clé API DeepSeek** :
+    - Créez un compte et obtenez votre clé auprès de [OpenRouter](https://openrouter.ai) et configurez-la dans le projet.
 ---
 
 ## 🚀 Installation
@@ -50,7 +50,7 @@ Ce projet combine la prise de notes et l'apprentissage actif grâce à l'intégr
 ### Configuration de l'API 🛠️
 
 1. Lancez l'application et rendez-vous dans la section **API**.
-2. Entrez votre clé API de Mistral.
+2. Entrez votre clé API de DeepSeek.
 3. Sauvegardez pour l'utiliser avec l'application.
 
 ### Prise de notes ✍️
@@ -67,10 +67,10 @@ Ce projet combine la prise de notes et l'apprentissage actif grâce à l'intégr
 
 ---
 
-## 📦 Structure du projet
+## 🛋️ Structure du projet
 
 ```
-active-learning-mistral/
+active-learning-deepseek/
 ├── main.py               # Fichier principal Streamlit
 ├── config.py             # Gestion des configurations (dossiers de notes et de questions)
 ├── utils/
@@ -105,12 +105,3 @@ Les contributions sont les bienvenues !
 
 ---
 
-## 🛡️ Licence
-
-Ce projet est sous licence MIT. Consultez le fichier [LICENSE](LICENSE) pour plus d'informations.
-
----
-
-## ❤️ Remerciements
-
-Merci à tous ceux qui soutiennent ce projet et à la communauté Python pour ses ressources incroyables. 🙌
