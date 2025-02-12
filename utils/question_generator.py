@@ -1,7 +1,7 @@
 import os
 import json
 import logging
-from mistralai import Mistral
+from openai import OpenAI
 from dotenv import load_dotenv
 from config import QUESTIONS_DIR, QUESTIONS_FILE
 
@@ -12,21 +12,23 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(
 load_dotenv()
 
 # Configuration API
-api_key = os.getenv("MISTRAL_KEY")
-model = "mistral-large-latest"
-client = Mistral(api_key=api_key)
+api_key = os.getenv("DEEPSEEK_KEY")
+client = OpenAI(
+    base_url="https://openrouter.ai/api/v1",
+    api_key=api_key,
+)
 
 def generate_questions(note_title, note_content):
     """
-    Génère des questions à partir du contenu des notes en utilisant l'API Mistral.
+    Génère des questions à partir du contenu des notes en utilisant l'API DeepSeek.
     :param note_title: Titre de la note
     :param note_content: Contenu de la note
     :return: Une liste de questions générées
     """
     try:
         prompt = (
-            f"À partir de ce texte, crée des questions relativement ouvertes. Qui va permettre de faire de l'apprentissage actif. "
-            f"Tu choisiras un nombre de question adéquat en fonction de la longueur du texte.\n"
+            f"À partir de ce texte, crée des questions relativement ouvertes qui permettent l'apprentissage actif. "
+            f"Tu choisiras un nombre de questions adéquat en fonction de la longueur du texte.\n"
             f"Pour chaque question, retourne un JSON avec deux clés : "
             f"'text' pour la question et 'reponse' pour la réponse correcte.\n"
             f"Texte : {note_content}\n"
@@ -34,13 +36,18 @@ def generate_questions(note_title, note_content):
         )
 
         # Envoyer la requête à l'API
-        response = client.chat.complete(
-            model=model,
+        response = client.chat.completions.create(
+            extra_headers={
+                "HTTP-Referer": "https://mxr.codes",
+                "X-Title": "Python-Accelerator",
+            },
+            extra_body={},
+            model="deepseek/deepseek-r1-distill-llama-70b:free",
             messages=[
                 {"role": "user", "content": prompt},
             ],
         )
-        
+
         # Vérification de la réponse
         logging.info("Réponse brute de l'API : %s", response)
         generated_text = response.choices[0].message.content.strip()
