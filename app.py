@@ -154,14 +154,14 @@ elif menu == "API":
     if "api_key" not in st.session_state:
         from dotenv import load_dotenv
         load_dotenv()
-        st.session_state.api_key = os.getenv("MISTRAL_KEY", "")
+        st.session_state.api_key = os.getenv("DEEPSEEK_KEY", "")
 
     # Formulaire pour entrer ou mettre à jour la clé API
-    st.write("Entrez votre clé API de Mistral pour activer les fonctionnalités de génération.")
+    st.write("Entrez votre clé API de OpenRouter pour activer les fonctionnalités de génération.")
     api_key_input = st.text_input(
         "Clé API",
         value=st.session_state.api_key,
-        placeholder="Entrez votre clé API de 32 caractères",
+        placeholder="Entrez votre clé API",
         type="password",
         key="api_input"
     )
@@ -171,13 +171,13 @@ elif menu == "API":
 
     with col1:
         if st.button("Enregistrer la clé API"):
-            if len(api_key_input) == 32:
+            if len(api_key_input) == 73:
                 with open(".env", "w") as file:
-                    file.write(f'MISTRAL_KEY="{api_key_input}"')
+                    file.write(f'DEEPSEEK_KEY="{api_key_input}"')
                 st.session_state.api_key = api_key_input
                 st.success("Clé API enregistrée avec succès !")
             else:
-                st.error("Clé API invalide. Elle doit comporter exactement 32 caractères.")
+                st.error("Clé API invalide. Elle doit comporter exactement 73 caractères.")
 
     with col2:
         if st.button("Réinitialiser la clé API"):
@@ -195,40 +195,50 @@ elif menu == "Docs":
     st.write("Vous pouvez accéder au code source et aux détails du projet sur le répo GitHub.")
     st.link_button("👉 Aller au dépôt GitHub", url="https://github.com/mamour-dx/NoteMaster")
 
-    # Documentation sur la gestion de l'API Mistral
-    st.subheader("Configurer l'API Mistral")
+    # Documentation sur la gestion de l'API DeepSeek via OpenRouter
+    st.subheader("Configurer l'API DeepSeek V3 via OpenRouter")
     st.markdown(
         """
-        Pour utiliser l'API Mistral dans cette application, suivez les étapes ci-dessous :
+        Pour utiliser l'API DeepSeek dans cette application, vous devez générer une clé API OpenRouter et la configurer. Deux options sont disponibles :
 
-        1. **Obtenez une clé API** :
-           - Rendez-vous sur le site officiel de [Mistral](https://mistral.ai) pour générer une clé API.
-           - Connectez-vous ou créez un compte si nécessaire.
+        ### 1️⃣ Obtenir une clé API OpenRouter
+        - Rendez-vous sur [OpenRouter](https://openrouter.ai) et créez un compte.
+        - Générez une clé API gratuite pour le model DeepSeek V3.
 
-        2. **Configurer votre clé API dans un fichier `.env`** :
-           - Créez un fichier `.env` à la racine du projet.
-           - Ajoutez-y la ligne suivante en remplaçant `VOTRE_CLE_API` par votre clé API :
-             ```
-             MISTRAL_KEY=VOTRE_CLE_API
-             ```
+        ### 2️⃣ Ajouter votre clé API à l'application
 
-        3. **Redémarrez l'application** :
-           - Une fois configuré, redémarrez votre application Streamlit pour prendre en compte les modifications.
-            ```bash
-              streamlit run app.py
-              ````
+        **Option 1 : via un fichier `.env` (manuel)**
+        - Créez un fichier `.env` à la racine du projet.
+        - Ajoutez-y la ligne suivante en remplaçant `VOTRE_CLE_API` par votre clé API :
+          ```
+          DEEPSEEK_KEY=VOTRE_CLE_API
+          ```
+        - Redémarrez l'application pour que les modifications soient prises en compte :
+          ```bash
+          streamlit run app.py
+          ```
 
-        Si vous rencontrez des problèmes avec l'API, assurez-vous que :
-        - Votre clé API est valide et non expirée.
-        - Vous avez correctement installé toutes les dépendances nécessaires (par exemple, via `pip install mistralai`).
+        **Option 2 : directement via l'application (automatique)**
+        - Accédez à l'onglet **API** dans le menu latéral de l'application.
+        - Entrez votre clé API dans le champ prévu et cliquez sur **Enregistrer**.
+        - L'application enregistrera automatiquement la clé pour une utilisation immédiate.
 
-        Consultez la documentation de Mistral pour plus de détails : [Documentation Mistral](https://mistral.ai/docs).
+        ### 💡 Résolution des problèmes
+        Si vous rencontrez des problèmes avec l'API :
+        - Vérifiez que votre clé API est correcte et valide.
+        - Assurez-vous que vous avez bien installé les dépendances nécessaires (`pip install openai`).
+        - Consultez la documentation d'OpenRouter ici : [Documentation OpenRouter](https://openrouter.ai/docs).
+
+        ### 🚀 Besoin d'aide ou d'une nouvelle fonctionnalité ?
+        Si vous avez un problème ou souhaitez suggérer une amélioration, ouvrez un **issue** sur GitHub :
+        👉 [Ouvrir un issue](https://github.com/mamour-dx/NoteMaster/issues)
         """
     )
     
     # Ajout d'un espace pour d'autres paramètres futurs
     st.subheader("Autres paramètres")
     st.write("Des options supplémentaires seront ajoutées ici à l'avenir.")
+
 
 
 
