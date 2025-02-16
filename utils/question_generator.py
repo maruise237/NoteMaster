@@ -42,7 +42,7 @@ def generate_questions(note_title, note_content):
                 "X-Title": "Python-Accelerator",
             },
             extra_body={},
-            model="deepseek/deepseek-r1-distill-llama-70b:free",
+            model="deepseek/deepseek-chat",
             messages=[
                 {"role": "user", "content": prompt},
             ],
