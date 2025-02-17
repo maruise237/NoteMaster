@@ -1,6 +1,6 @@
 import streamlit as st
 import os, json
-from utils.note_manager import load_notes, save_note, delete_note
+from utils.note_manager import load_notes, save_note, delete_note, update_note
 from utils.question_generator import generate_questions
 from config import QUESTIONS_DIR
 
@@ -46,41 +46,68 @@ elif menu == "Prise de Notes":
     
     if "notes" not in st.session_state:
         st.session_state.notes = load_notes()
+    
+    if "editing_note" not in st.session_state:
+        st.session_state.editing_note = None
 
-    if "refresh" not in st.session_state:
-        st.session_state.refresh = False
-
+    # Affichage des notes existantes
     st.write("### Vos notes :")
     if st.session_state.notes:
         for note in st.session_state.notes:
-            st.write(f"- {note['title']}")
+            col1, col2, col3 = st.columns([3, 1, 1])
+            with col1:
+                st.write(f"📝 {note['title']}")
+            with col2:
+                if st.button("Voir/Modifier", key=f"edit_{note['title']}"):
+                    st.session_state.editing_note = note
+            with col3:
+                if st.button("Supprimer", key=f"delete_{note['title']}"):
+                    delete_note(note['title'])
+                    st.session_state.notes = load_notes()
+                    if st.session_state.editing_note and st.session_state.editing_note['title'] == note['title']:
+                        st.session_state.editing_note = None
+                    st.rerun()
     else:
-        st.write("Aucune note disponible pour le moment.")
+        st.info("Aucune note disponible pour le moment.")
 
-    # Add a new note
+    # Section d'édition/visualisation
+    if st.session_state.editing_note:
+        st.markdown("---")
+        st.subheader(f"Modifier la note : {st.session_state.editing_note['title']}")
+        edited_content = st.text_area(
+            "Contenu de la note",
+            value=st.session_state.editing_note['content'],
+            height=300,
+            key="edit_content"
+        )
+        col1, col2 = st.columns(2)
+        with col1:
+            if st.button("Sauvegarder les modifications"):
+                if update_note(st.session_state.editing_note['title'], edited_content):
+                    st.success("Note mise à jour avec succès!")
+                    st.session_state.notes = load_notes()
+                    st.session_state.editing_note = None
+                    st.rerun()
+                else:
+                    st.error("Erreur lors de la mise à jour de la note")
+        with col2:
+            if st.button("Annuler"):
+                st.session_state.editing_note = None
+                st.rerun()
+
+    # Section pour créer une nouvelle note
+    st.markdown("---")
     st.subheader("Créer une nouvelle note")
     note_title = st.text_input("Titre de la note")
-    note_content = st.text_area("Contenu de la note", height=330)
+    note_content = st.text_area("Contenu de la note", height=200)
     if st.button("Sauvegarder"):
         if note_title and note_content:
             save_note(note_title, note_content)
             st.session_state.notes = load_notes()
             st.success(f"Note '{note_title}' sauvegardée avec succès !")
+            st.rerun()
         else:
             st.warning("Veuillez fournir un titre et un contenu pour votre note.")
-
-    # Delete a note
-    st.subheader("Supprimer une note")
-    if st.session_state.notes:
-        note_titles = [note["title"] for note in st.session_state.notes]
-        note_to_delete = st.selectbox("Sélectionnez une note à supprimer", note_titles, key="delete_note_select")
-        if st.button("Supprimer"):
-            delete_note(note_to_delete)
-            st.session_state.notes = load_notes()
-            st.session_state.refresh = not st.session_state.refresh  
-            st.success(f"Note '{note_to_delete}' supprimée avec succès !")
-    else:
-        st.warning("Aucune note disponible à supprimer.")
 
 
 
