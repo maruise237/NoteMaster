@@ -37,10 +37,6 @@ def generate_questions(note_title, note_content):
 
         # Envoyer la requête à l'API
         response = client.chat.completions.create(
-            extra_headers={
-                "HTTP-Referer": "https://mxr.codes",
-                "X-Title": "Python-Accelerator",
-            },
             extra_body={},
             model="deepseek/deepseek-chat",
             messages=[
