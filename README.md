@@ -1,107 +1,136 @@
-# 📝 Active Learning avec Python et DeepSeek
+# 📝 NoteMaster - Assistant d'Apprentissage Actif
 
-Ce projet combine la prise de notes et l'apprentissage actif grâce à l'intégration de Python et de l'API DeepSeek. L'application permet aux étudiants de prendre des notes, de générer des questions basées sur leurs notes et de répondre à ces questions avec des corrections automatiques accompagnées d'explications détaillées. 🚀
+NoteMaster est une application web qui combine la prise de notes et l'apprentissage actif grâce à l'intégration de Python et de l'API DeepSeek de OpenRouter. L'application permet aux étudiants de prendre des notes, de générer des questions basées sur leurs notes, de répondre à ces questions et de suivre leur progression. 🚀
 
 ---
 
 ## 🛠️ Fonctionnalités
 
-- **Prise de notes simplifiée** : Ajoutez, consultez et supprimez des notes facilement.
-- **Génération de questions** : Utilisez l'API de DeepSeek pour transformer vos notes en questions relativement ouvertes.
-- **Correction instantanée** : Répondez aux questions et recevez des explications détaillées sur vos réponses.
-- **Interface intuitive** : Une interface graphique épurée et facile à utiliser grâce à Streamlit.
-- **Configuration de l'API** : Gérez votre clé API DeepSeek directement depuis l'interface sur la partie API.
+### 📝 Gestion des Notes
 
----
+- **Création et édition** : Ajoutez, modifiez et supprimez des notes facilement
+- **Interface intuitive** : Éditeur de texte intégré pour une prise de notes confortable
+- **Organisation simple** : Toutes vos notes accessibles en un coup d'œil
 
-## 👋 Prérequis
+### 📚 Mode Quiz
 
-1. **Python 3.9 ou plus**
-2. **Bibliothèques Python nécessaires** :
-    - `streamlit`
-    - `dotenv`
-    - `openai`
-3. **Clé API DeepSeek** :
-    - Créez un compte et obtenez votre clé auprès de [OpenRouter](https://openrouter.ai) et configurez-la dans le projet.
+- **Génération intelligente** : Questions générées automatiquement à partir de vos notes
+- **Évaluation bienveillante** : Système de notation qui valorise la compréhension des concepts clés
+- **Réponses libres** : Questions ouvertes pour un apprentissage plus actif
+- **Notation sur 5** : Évaluation claire et motivante de vos réponses
+
+### 📊 Suivi des Performances
+
+- **Statistiques détaillées** : Visualisez vos progrès par note
+- **Graphiques intuitifs** :
+  - Score moyen global
+  - Évolution des scores dans le temps
+  - Comparaison entre différentes notes
+- **Historique complet** : Accès à toutes vos tentatives précédentes
+
+### ⚙️ Configuration Facile
+
+- **Interface API** : Gérez votre clé API DeepSeek directement depuis l'application
+- **Documentation intégrée** : Guide complet d'utilisation accessible dans l'app
+
 ---
 
 ## 🚀 Installation
 
-1. Clonez ce dépôt :
-    ```bash
-    git clone https://github.com/mamour-dx/NoteMaster.git
-    cd NoteMaster
-    ```
+1. **Clonez le dépôt :**
 
-2. Installez les dépendances :
-    ```bash
-    pip install -r requirements.txt
-    ```
+```bash
+git clone https://github.com/mamour-dx/NoteMaster.git
+cd NoteMaster
+```
 
-3. Lancez l'application Streamlit :
-    ```bash
-    streamlit run main.py
-    ```
+2. **Installez les dépendances :**
 
----
+```bash
+pip install -r requirements.txt
+```
 
-## 📚 Utilisation
+3. **Configurez l'API :**
 
-### Configuration de l'API 🛠️
+- Créez un compte sur [OpenRouter](https://openrouter.ai)
+- Obtenez une clé API pour DeepSeek
+- Configurez la clé dans l'application via l'interface ou le fichier `.env`
 
-1. Lancez l'application et rendez-vous dans la section **API**.
-2. Entrez votre clé API de DeepSeek.
-3. Sauvegardez pour l'utiliser avec l'application.
+4. **Lancez l'application :**
 
-### Prise de notes ✍️
-
-1. Ajoutez une nouvelle note en remplissant le titre et le contenu.
-2. Consultez la liste de vos notes existantes.
-3. Supprimez des notes si nécessaire.
-
-### Génération de questions 🎯
-
-1. Rendez-vous dans la section **Questions**.
-2. Sélectionnez une note pour générer des questions basées sur son contenu.
-3. Visualisez les questions générées et répondez-y directement dans l'interface.
+```bash
+streamlit run app.py
+```
 
 ---
 
-## 🛋️ Structure du projet
+## 📁 Structure du Projet
 
 ```
-active-learning-deepseek/
-├── main.py               # Fichier principal Streamlit
-├── config.py             # Gestion des configurations (dossiers de notes et de questions)
+NoteMaster/
+├── app.py                 # Application principale Streamlit
+├── config.py             # Configuration (chemins, constantes)
+├── requirements.txt      # Dépendances Python
 ├── utils/
-│   ├── notes_manager.py  # Gestion des notes (ajout, suppression, chargement)
-│   ├── question_manager.py  # Génération et gestion des questions
-├── notes/                # Dossier de sauvegarde des notes (en format txt)
-├── questions/            # Dossier de sauvegarde des questions (en format json)
-├── .env                  # Fichier pour la clé API
-└── requirements.txt      # Dépendances Python 
+│   ├── note_manager.py   # Gestion des notes
+│   ├── question_generator.py  # Génération des questions
+│   └── stats_manager.py  # Gestion des statistiques
+├── notes/               # Stockage des notes
+├── questions/          # Stockage des questions générées
+└── stats/             # Stockage des statistiques
 ```
 
 ---
 
-## 🤝 Contribuer
+## 💡 Utilisation
 
-Les contributions sont les bienvenues !
+1. **Dashboard**
 
-1. Forkez le projet.
-2. Créez une branche pour votre fonctionnalité :
-    ```bash
-    git checkout -b feature/ma-nouvelle-fonctionnalite
-    ```
-3. Commitez vos modifications :
-    ```bash
-    git commit -m "Ajout d'une nouvelle fonctionnalité"
-    ```
-4. Poussez la branche :
-    ```bash
-    git push origin feature/ma-nouvelle-fonctionnalite
-    ```
-5. Ouvrez une Pull Request.
+   - Vue d'ensemble de l'application
+   - Accès rapide aux fonctionnalités principales
+
+2. **Prise de Notes**
+
+   - Créez une nouvelle note
+   - Modifiez vos notes existantes
+   - Supprimez les notes inutiles
+
+3. **Mode Quiz**
+
+   - Sélectionnez une note
+   - Générez des questions
+   - Répondez aux questions
+   - Obtenez une évaluation immédiate
+
+4. **Statistiques**
+
+   - Consultez vos performances
+   - Analysez votre progression
+   - Gérez votre historique
+
+5. **Configuration API**
+   - Configurez votre clé API
+   - Vérifiez le statut de la connexion
 
 ---
 
+## 🤝 Contribution
+
+Les contributions sont les bienvenues ! N'hésitez pas à :
+
+- Signaler des bugs
+- Proposer des améliorations
+- Soumettre des pull requests
+
+---
+
+## 📫 Contact
+
+- GitHub : [mamour-dx/NoteMaster](https://github.com/mamour-dx/NoteMaster)
+- YouTube : [@mxr_codes](https://youtube.com/@mxr_codes)
+
+---
+
+## 📄 Licence
+
+Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
