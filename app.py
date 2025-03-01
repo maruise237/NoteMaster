@@ -1,4 +1,11 @@
 import streamlit as st
+
+st.set_page_config(
+    page_title="NoteMaster",
+    page_icon="📝",
+    layout="wide"
+)
+
 import os, json
 from utils.note_manager import load_notes, save_note, delete_note, update_note
 from utils.question_generator import generate_questions, evaluate_answer
