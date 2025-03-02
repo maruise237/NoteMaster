@@ -399,6 +399,7 @@ elif menu == "Docs":
         ### 🚀 Besoin d'aide ou d'une nouvelle fonctionnalité ?
         Si vous avez un problème ou souhaitez suggérer une amélioration, ouvrez un **issue** sur GitHub :
         👉 [Ouvrir un issue](https://github.com/mamour-dx/NoteMaster/issues)
+        Trop compliqué ? Envoyez-moi un email : [me@mxr.codes](mailto:me@mxr.codes)
         """
     )
     
