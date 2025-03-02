@@ -126,7 +126,7 @@ Les contributions sont les bienvenues ! N'hésitez pas à :
 
 ## 📫 Contact
 
-- GitHub : [mamour-dx/NoteMaster](https://github.com/mamour-dx/NoteMaster)
+- Email: [me@mxr.codes](mailto:me@mxr.codes)
 - YouTube : [@mxr_codes](https://youtube.com/@mxr_codes)
 
 ---
