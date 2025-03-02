@@ -370,7 +370,7 @@ elif menu == "Docs":
 
         ### 1️⃣ Obtenir une clé API OpenRouter
         - Rendez-vous sur [OpenRouter](https://openrouter.ai) et créez un compte.
-        - Générez une clé API gratuite pour le model DeepSeek V3.
+        - Générez une clé API gratuite pour le modèle DeepSeek V3.
 
         ### 2️⃣ Ajouter votre clé API à l'application
 
