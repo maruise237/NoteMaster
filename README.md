@@ -53,7 +53,7 @@ pip install -r requirements.txt
 3. **Configurez l'API :**
 
 - Créez un compte sur [OpenRouter](https://openrouter.ai)
-- Obtenez une clé API pour DeepSeek
+- Obtenez une clé API pour DeepSeek (blog)[https://apidog.com/blog/how-to-use-deepseek-api-for-free/]
 - Configurez la clé dans l'application via l'interface ou le fichier `.env`
 
 4. **Lancez l'application :**
