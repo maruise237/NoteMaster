@@ -19,7 +19,7 @@ st.sidebar.title("📝 **NoteMaster**")
 st.sidebar.markdown("<h3>Menu</h3>", unsafe_allow_html=True)
 menu = st.sidebar.radio(
     "📂 <span style='color: #0066CC;'>Choisissez une option :</span>", 
-    ["Dashboard", "Prise de Notes", "Mode Quiz", "Statistiques", "API", "Docs"], 
+    ["Dashboard", "Prise de Notes", "Mode Quiz", "Performances", "API", "Docs"], 
     format_func=lambda x: f"🔹 {x}", 
     index=0,
     label_visibility="hidden", 
@@ -233,8 +233,8 @@ elif menu == "Mode Quiz":
             st.info("Aucune question disponible. Cliquez sur 'Générer des questions' pour commencer.")
 
 
-elif menu == "Statistiques":
-    st.header("📊 Statistiques d'apprentissage")
+elif menu == "Performances":
+    st.header("📊 Performances d'apprentissage")
     
     stats = get_all_stats()
     if not stats:
