@@ -16,7 +16,7 @@ from utils.stats_manager import get_all_stats, save_quiz_result, delete_note_sta
 
 # Sidebar 
 st.sidebar.title("📝 **NoteMaster**")
-st.sidebar.markdown("<h3>Navigation rapide</h3>", unsafe_allow_html=True)
+st.sidebar.markdown("<h3>Menu</h3>", unsafe_allow_html=True)
 menu = st.sidebar.radio(
     "📂 <span style='color: #0066CC;'>Choisissez une option :</span>", 
     ["Dashboard", "Prise de Notes", "Mode Quiz", "Statistiques", "API", "Docs"], 
