@@ -35,7 +35,9 @@ NoteMaster est une application web qui combine la prise de notes et l'apprentiss
 
 ---
 
-## 🚀 Installation
+## 🚀 Installation 
+
+PS: Il est considéré comme bonne pratique de mettre un environnement virtuel. C'est très simple, demandes à ChatGPT comment faire :)
 
 1. **Clonez le dépôt :**
 
@@ -53,7 +55,7 @@ pip install -r requirements.txt
 3. **Configurez l'API :**
 
 - Créez un compte sur [OpenRouter](https://openrouter.ai)
-- Obtenez une clé API pour DeepSeek (blog)[https://apidog.com/blog/how-to-use-deepseek-api-for-free/]
+- Obtenez une clé API pour DeepSeek (détaillé sur ce [blog](https://apidog.com/blog/how-to-use-deepseek-api-for-free/))
 - Configurez la clé dans l'application via l'interface ou le fichier `.env`
 
 4. **Lancez l'application :**
