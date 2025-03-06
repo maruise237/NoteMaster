@@ -2,4 +2,5 @@
 .env
 #pycache files
 __pycache__/
+#annoying sys file that gets pushed
 .DS_Store
