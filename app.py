@@ -420,4 +420,4 @@ col1, col2 = st.columns(2)
 with col1:
     st.link_button("📄 Répo Github", url="https://github.com/mamour-dx/NoteMaster")
 with col2:
-    st.link_button("📚 Vidéo YouTube", url="https://youtube.com/@mxr_codes")
+    st.link_button("📚 Vidéo YouTube", url="https://www.youtube.com/watch?v=1hFGjvgwC_8&t=60s")
