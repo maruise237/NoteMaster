@@ -1,25 +1,25 @@
-# 📝 NoteMaster - Assistant d'Apprentissage Actif
+#  NoteMaster - Assistant d'Apprentissage Actif
 
 NoteMaster est une application web qui combine la prise de notes et l'apprentissage actif grâce à l'intégration de Python et de l'API DeepSeek de OpenRouter. L'application permet aux étudiants de prendre des notes, de générer des questions basées sur leurs notes, de répondre à ces questions et de suivre leur progression. 🚀
 
 ---
 
-## 🛠️ Fonctionnalités
+##  Fonctionnalités
 
-### 📝 Gestion des Notes
+###  Gestion des Notes
 
 - **Création et édition** : Ajoutez, modifiez et supprimez des notes facilement
 - **Interface intuitive** : Éditeur de texte intégré pour une prise de notes confortable
 - **Organisation simple** : Toutes vos notes accessibles en un coup d'œil
 
-### 📚 Mode Quiz
+###  Mode Quiz
 
 - **Génération intelligente** : Questions générées automatiquement à partir de vos notes
 - **Évaluation bienveillante** : Système de notation qui valorise la compréhension des concepts clés
 - **Réponses libres** : Questions ouvertes pour un apprentissage plus actif
 - **Notation sur 5** : Évaluation claire et motivante de vos réponses
 
-### 📊 Suivi des Performances
+###  Suivi des Performances
 
 - **Statistiques détaillées** : Visualisez vos progrès par note
 - **Graphiques intuitifs** :
@@ -28,14 +28,14 @@ NoteMaster est une application web qui combine la prise de notes et l'apprentiss
   - Comparaison entre différentes notes
 - **Historique complet** : Accès à toutes vos tentatives précédentes
 
-### ⚙️ Configuration Facile
+###  Configuration Facile
 
 - **Interface API** : Gérez votre clé API DeepSeek directement depuis l'application
 - **Documentation intégrée** : Guide complet d'utilisation accessible dans l'app
 
 ---
 
-## 🚀 Installation 
+##  Installation 
 
 PS: Il est considéré comme bonne pratique de mettre un environnement virtuel. C'est très simple, demandes à ChatGPT comment faire :)
 
@@ -66,7 +66,7 @@ streamlit run app.py
 
 ---
 
-## 📁 Structure du Projet
+##  Structure du Projet
 
 ```
 NoteMaster/
@@ -84,7 +84,7 @@ NoteMaster/
 
 ---
 
-## 💡 Utilisation
+##  Utilisation
 
 1. **Dashboard**
 
@@ -116,7 +116,7 @@ NoteMaster/
 
 ---
 
-## 🤝 Contribution
+##  Contribution
 
 Les contributions sont les bienvenues ! N'hésitez pas à :
 
@@ -126,13 +126,7 @@ Les contributions sont les bienvenues ! N'hésitez pas à :
 
 ---
 
-## 📫 Contact
+##  Contact
 
-- Email: [me@mxr.codes](mailto:me@mxr.codes)
-- YouTube : [@mxr_codes](https://youtube.com/@mxr_codes)
-
----
-
-## 📄 Licence
-
-Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
+- Email: [me@mxr.codes](mailto:kamtech19)
+- YouTube : [@mxr_codes](https://youtube.com/kamtech)
